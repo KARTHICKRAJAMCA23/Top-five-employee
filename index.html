@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module" src="module.js">
+            import { boston } from "./script.js";
+
+var newboston=boston.data;
+ 
+     for(let i=0;i<newboston.length;i++){
+         for(let j=i+1;j<newboston.length;j++){//this code for decending salary of employee
+            if(newboston[i][11]<newboston[j][11]){
+           let temp=newboston[i];
+            newboston[i]=newboston[j];
+         newboston[j]=temp;
+
+
+        } 
+     }
+    }
+     var output=newboston.slice(0,6);//its stored top five employee data
+
+     var ele="";
+      for(let k=0;k<output.length;k++){//print top five employee in webpage
+        ele=ele+"<h1>"+ output[k][8]+"</h1>" + "<h1>" +output[k][11]+"</h1>"
+        console.log(output[k][8],output[k][11]);
+       
+     }
+    document.getElementById("app").innerHTML=ele;
+    
+    var income="";
+    for(let z=0;z<newboston.length;z++){
+        var res=newboston[z][11]*12;
+        
+        if(res>=200000){
+             console.log(res);
+            income=income+"<h1>"+ newboston[z][8]+"</h1>" +"<h1>" +res+"</h1>"
+        }
+    }
+    document.getElementById("income").innerHTML=income;
+    </script>
+    
+<h1 style="color: red;">TOP FIVE EMPLOYEE NAME AND SALARY </h1>
+    <div id="app">
+     
+    </div>
+
+    <h1 style="color: blue;">EMPLOYEE NAME AND ANNUAL INCOME GREATER THAN 200000</h1>
+    <div id="income">
+        
+    </div>
+</body>
+</html>
